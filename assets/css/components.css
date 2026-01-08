@@ -28,14 +28,18 @@
     z-index: 10;
     cursor: pointer;
     user-select: none;
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: rgba(160, 160, 160, 0.8);
+    
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .pause--btn svg {

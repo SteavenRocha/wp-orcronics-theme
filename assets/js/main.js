@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDragging = false;
     let remainingTime = 0;
     const pauseBtn = document.querySelector('.pause--btn');
-    const pagination = document.querySelector('.swiper-pagination');
+    const pagination = slider.querySelector('.swiper-pagination');
 
     const heroSlider = new Swiper(slider, {
         loop: true,
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             autoplayTimeLeft(swiper, time) {
                 if (!isPaused) {
                     remainingTime = time;
-                    console.log(remainingTime)
+                    /*  console.log(remainingTime) */
                 }
             },
 
@@ -92,4 +92,44 @@ document.addEventListener('DOMContentLoaded', () => {
             pauseBtn.setAttribute('aria-label', 'Pausar animación');
         }
     });
+});
+
+/* =========================
+ *  SWIPER - SERVICES SLIDER
+ * ========================= */
+document.addEventListener('DOMContentLoaded', () => {
+
+    const servicesSlider = document.querySelector('.services-slider');
+    if (!servicesSlider) return;
+
+    const swiperServices = new Swiper(servicesSlider, {
+        loop: false,
+        speed: 600,
+        spaceBetween: 24,
+
+        slidesPerView: 1,
+
+        pagination: {
+            el: servicesSlider.querySelector('.swiper-pagination'),
+            clickable: true,
+        },
+
+        navigation: {
+            nextEl: servicesSlider.querySelector('.swiper-button-next'),
+            prevEl: servicesSlider.querySelector('.swiper-button-prev'),
+        },
+
+        breakpoints: {
+            560: {
+                slidesPerView: 2,
+            },
+            768: {
+                slidesPerView: 3,
+            },
+            1024: {
+                slidesPerView: 4,
+            },
+        }
+    });
+
 });

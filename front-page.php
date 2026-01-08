@@ -70,11 +70,24 @@
     </section>
 
     <!-- SERVICIOS -->
+
+    <?php
+    $args = array(
+        'post_type' => 'servicios',
+        'post_status' => 'publish',
+        'posts_per_page' => -1, // Todos los servicios
+        'orderby' => 'title',
+        'order' => 'ASC',
+    );
+
+    $services_query = new WP_Query($args);
+    ?>
+
     <section class="section services">
         <div class="container">
             <div class="heading">
 
-                <div class="heading__texts">
+                <div class="heading__texts text--white">
                     <?php
                     $services_title = get_field('services_title');
                     $services_description = get_field('services_description');
@@ -97,6 +110,55 @@
                 <?php endif; ?>
 
             </div>
+
+            <div class="swiper services-slider mg-t-5">
+                <div class="swiper-wrapper">
+
+                    <?php if ($services_query->have_posts()):
+                        while ($services_query->have_posts()):
+                            $services_query->the_post();
+
+                            // ACF (si usas)
+                            $cpt_services_icon = get_field('cpt_services_icon');
+                            $cpt_services_description = get_field('cpt_services_description');
+                    ?>
+                            <div class="swiper-slide">
+                                <a class="card"
+                                    href="<?php echo esc_url(get_permalink()); ?>">
+                                    <?php if ($cpt_services_icon): ?>
+                                        <img src="<?php echo esc_url($cpt_services_icon); ?>" alt="" class="icon">
+                                    <?php endif; ?>
+
+                                    <h3 class="card__title mg-t-2">
+                                        <?php the_title(); ?>
+                                    </h3>
+
+                                    <?php if ($cpt_services_description): ?>
+                                        <p class="mg-t-1"><?php echo esc_html($cpt_services_description); ?></p>
+                                    <?php endif; ?>
+                                </a>
+                            </div>
+
+                    <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    endif; ?>
+
+                </div>
+
+                <!-- Controles Swiper -->
+                <div class="swiper__controls">
+                    <!-- Botón antes -->
+                    <div class="swiper-button-prev"></div>
+
+                    <!-- Paginación -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- Botón Siguiente -->
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+
         </div>
     </section>
 
