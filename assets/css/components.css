@@ -1,0 +1,64 @@
+/* =========================
+ *  BOTONES
+ * ========================= */
+.btn {
+    font-size: 1.7rem;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 50px;
+    transition: background-color .3s ease;
+}
+
+.btn.style_1 {
+    color: var(--white);
+    background-color: var(--primary);
+}
+
+.btn.style_1:hover {
+    background-color: var(--primary-hover);
+}
+
+/* =========================
+ *  BOTON DE PAUSA DEL SLIDER
+ * ========================= */
+.pause--btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+    width: 45px;
+    height: 45px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(160, 160, 160, 0.8);
+}
+
+.pause--btn svg {
+    width: 25px;
+    height: 25px;
+}
+
+/* Estado por defecto */
+.pause--btn .play {
+    display: none;
+    animation: keyframes-fill 0.3s;
+}
+
+.pause--btn .pause {
+    display: block;
+    animation: keyframes-fill 0.3s;
+}
+
+/* Estado pausado */
+.pause--btn.is-paused .play {
+    display: block;
+}
+
+.pause--btn.is-paused .pause {
+    display: none;
+}

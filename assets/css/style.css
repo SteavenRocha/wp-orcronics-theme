@@ -1,0 +1,237 @@
+@import url('./components.css');
+
+/* =========================
+ *  FONTS
+ * ========================= */
+
+/* Roboto */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: 200 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* =========================
+ *  VARIABLES GLOBALES
+ * ========================= */
+
+:root {
+    /* Fonts */
+    --primary-font: 'Roboto', sans-serif;
+
+    /* Colors */
+    /* Primary */
+    --primary: #ff8138;
+    --primary-hover: #ff7428;
+
+    /* Secondary */
+
+    /* Neutrals */
+    --white: #ffffff;
+    --black: #000000;
+}
+
+/* =========================
+ *  NORMALIZACIÓN
+ * ========================= */
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    /* 10px = 1rem */
+    scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    font-family: var(--primary-font);
+    font-size: 1.8rem;
+    line-height: 1.5;
+}
+
+/* =========================
+ *  ESTILOS GLOBALES
+ * ========================= */
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    font-family: var(--primary-font);
+}
+
+h1 {
+    font-size: clamp(4rem, 4vw, 3rem);
+    line-height: 1.25;
+}
+
+p {
+    line-height: 1.35;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* =========================
+ *  UTILIDADES
+ * ========================= */
+
+/* Container */
+.container {
+    max-width: 130rem;
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+    padding-block: 8rem;
+}
+
+.text--white {
+    color: var(--white);
+}
+
+.mg-t-1 {
+    margin-top: 10px;
+}
+
+.mg-t-2 {
+    margin-top: 20px;
+}
+
+.mg-t-3 {
+    margin-top: 30px;
+}
+
+.mg-t-4 {
+    margin-top: 40px;
+}
+
+/* =========================
+ *  SWIPER - HERO SLIDER
+ * ========================= */
+.hero-slider {
+    position: relative;
+}
+
+.swiper-pagination-bullet {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(160, 160, 160, 0.8);
+    opacity: 1;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: all .6s ease;
+}
+
+/* Barra de progreso */
+.swiper-pagination-bullet::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #ffffff;
+    transform: scaleX(0);
+    transform-origin: left;
+    will-change: transform;
+}
+
+.swiper-pagination-bullet-active {
+    width: 50px;
+}
+
+.swiper-pagination-bullet-active::after {
+    animation: bullet-progress 6000ms linear forwards;
+    animation-play-state: running;
+}
+
+/* Pausa de la animacion */
+.swiper-pagination.is-paused .swiper-pagination-bullet-active::after {
+    animation-play-state: paused;
+}
+
+@keyframes bullet-progress {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.slide__hero {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 700px;
+    max-height: 100svh;
+    display: flex;
+    align-items: center;
+}
+
+.slide__left {
+    max-width: 60rem;
+}
+
+/* =========================
+ *  BARRA DE NAVEGACIÓN
+ * ========================= */
+
+.header .nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 1rem;
+}
+
+.header .menu {
+    display: flex;
+    gap: 20px;
+}
+
+/* =========================
+ *  SERVICIOS
+ * ========================= */
+
+.services .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.services .heading .heading__texts {
+    max-width: 60rem;
+}
+
+.secondary--title {
+    font-size: clamp(2.5rem, 4vw, 2rem);
+    line-height: 1.25;
+    letter-spacing: 0.3rem;
+}
