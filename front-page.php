@@ -64,13 +64,44 @@
             </button>
         </div>
     </section>
-    <!-- CLIENTES -->
-    <section>
 
+    <!-- CLIENTES -->
+    <section class="section clients white--bg">
+        <div class="container">
+            <?php
+            $clients_title = get_field('clients_title');
+            $clients = get_field('clients');
+            ?>
+
+            <?php if ($clients_title): ?>
+                <h2 class="secondary--title heading--center--style"><?php echo esc_html($clients_title); ?></h2>
+            <?php endif; ?>
+
+            <div class="clients__container mg-t-2">
+                <?php if (have_rows('clients')): ?>
+                    <?php while (have_rows('clients')): the_row();
+
+                        $clients_logo = get_sub_field('clients_logo');
+                        $clients_url  = get_sub_field('clients_url');
+                    ?>
+                        <?php if ($clients_logo): ?>
+
+                            <a href="<?php echo esc_url($clients_url); ?>" target="_blank" rel="noopener">
+                                <?php echo wp_get_attachment_image(
+                                    $clients_logo,
+                                    'medium',
+                                    false,
+                                    ['class' => 'client-logo']
+                                ); ?>
+                            </a>
+                    <?php endif;
+                    endwhile; ?>
+                <?php endif; ?>
+            </div>
+        </div>
     </section>
 
     <!-- SERVICIOS -->
-
     <?php
     $args = array(
         'post_type' => 'servicios',
@@ -118,7 +149,6 @@
                         while ($services_query->have_posts()):
                             $services_query->the_post();
 
-                            // ACF (si usas)
                             $cpt_services_icon = get_field('cpt_services_icon');
                             $cpt_services_description = get_field('cpt_services_description');
                     ?>
@@ -169,11 +199,10 @@
                 <?php
                 $statistics_title = get_field('statistics_title');
                 $statistics_description = get_field('statistics_description');
-                $statistics_valores = get_field('statistics_valores');
                 ?>
 
                 <?php if ($statistics_title): ?>
-                    <h2 class=""><?php echo esc_html($statistics_title); ?></h2>
+                    <h2><?php echo esc_html($statistics_title); ?></h2>
                 <?php endif; ?>
                 <?php if ($statistics_description): ?>
                     <p class="mg-t-1"><?php echo esc_html($statistics_description); ?></p>

@@ -27,7 +27,7 @@
     --primary-hover: #ff7428;
 
     /* Secondary */
-    --bone-bg: #FAFAFA;
+    --bone: #FAFAFA;
 
     /* Neutrals */
     --white: #ffffff;
@@ -173,7 +173,11 @@ img {
 }
 
 .bone--bg {
-    background-color: var(--bone-bg);
+    background-color: var(--bone);
+}
+
+.white--bg {
+    background-color: var(--white);
 }
 
 .heading--center--style {
@@ -281,6 +285,49 @@ img {
 .header .menu {
     display: flex;
     gap: 20px;
+}
+
+/* =========================
+ *  CLIENTES
+ * ========================= */
+
+.clients__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    overflow: hidden;
+    /* gap: 80px; */
+}
+
+.client-logo {
+    max-width: 144px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.clients__container a {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: background 0.4s ease;
+}
+
+.clients__container img {
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+.clients__container a:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.clients__container a:hover {
+    background: rgba(0, 0, 0, 0.055);
 }
 
 /* =========================
