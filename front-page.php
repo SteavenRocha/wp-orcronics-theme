@@ -162,6 +162,42 @@
         </div>
     </section>
 
+    <!-- ESTADISTICAS -->
+    <section class="section statistics bone--bg">
+        <div class="container">
+            <div class="heading heading--center--style">
+                <?php
+                $statistics_title = get_field('statistics_title');
+                $statistics_description = get_field('statistics_description');
+                $statistics_valores = get_field('statistics_valores');
+                ?>
+
+                <?php if ($statistics_title): ?>
+                    <h2 class=""><?php echo esc_html($statistics_title); ?></h2>
+                <?php endif; ?>
+                <?php if ($statistics_description): ?>
+                    <p class="mg-t-1"><?php echo esc_html($statistics_description); ?></p>
+                <?php endif; ?>
+            </div>
+            <div class="statistics__container mg-t-4">
+                <?php if (have_rows('statistics_valores')): ?>
+                    <?php while (have_rows('statistics_valores')): the_row();
+                        $statistics_cifra = get_sub_field('statistics_cifra');
+                        $statistics_valor_title = get_sub_field('statistics_valor_title');
+                        $statistics_valor_des = get_sub_field('statistics_valor_des');
+                    ?>
+                        <div class="individual__statistics">
+                            <span class="cifra" data-target="<?php echo esc_html($statistics_cifra); ?>">0</span>
+                            <h4><?php echo esc_html($statistics_valor_title); ?></h4>
+                            <p class="mg-t-05"><?php echo esc_html($statistics_valor_des); ?></p>
+                        </div>
+
+                    <?php endwhile; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
+
 </main>
 
 <?php wp_footer(); ?>

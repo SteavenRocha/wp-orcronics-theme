@@ -27,6 +27,7 @@
     --primary-hover: #ff7428;
 
     /* Secondary */
+    --bone-bg: #FAFAFA;
 
     /* Neutrals */
     --white: #ffffff;
@@ -71,16 +72,24 @@ h6,
 p {
     margin: 0;
     font-family: var(--primary-font);
+    line-height: 1.25;
 }
 
 h1 {
     font-size: clamp(4rem, 4vw, 3rem);
-    line-height: 1.25;
+}
+
+h2 {
+    font-size: clamp(2.8rem, 4vw, 2.5rem);
+    font-weight: 600;
 }
 
 h3 {
-    font-size: clamp(2rem, 4vw, 2.2rem);
-    line-height: 1.25;
+    font-size: clamp(2.5rem, 4vw, 2rem);
+}
+
+h4 {
+    font-size: clamp(2.2rem, 4vw, 1.9rem);
 }
 
 p {
@@ -89,7 +98,6 @@ p {
 
 .secondary--title {
     font-size: clamp(2.5rem, 4vw, 2rem);
-    line-height: 1.25;
     letter-spacing: 0.3rem;
 }
 
@@ -136,6 +144,10 @@ img {
     color: var(--white);
 }
 
+.mg-t-05 {
+    margin-top: 5px;
+}
+
 .mg-t-1 {
     margin-top: 10px;
 }
@@ -158,6 +170,16 @@ img {
 
 .up-text {
     text-transform: uppercase;
+}
+
+.bone--bg {
+    background-color: var(--bone-bg);
+}
+
+.heading--center--style {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
 }
 
 /* ==========
@@ -302,6 +324,7 @@ img {
 }
 
 .services .card .card__title {
+    font-size: clamp(2.2rem, 4vw, 2rem);
     font-weight: 600;
     text-transform: uppercase;
 }
@@ -329,4 +352,20 @@ img {
 
 .services .swiper-pagination-bullet-active {
     background-color: white;
+}
+
+/* =========================
+ *  ESTADISTICAS
+ * ========================= */
+
+.statistics__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.statistics .cifra {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 8rem;
+    line-height: 1.25;
 }
